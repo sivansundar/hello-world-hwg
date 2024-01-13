@@ -27,7 +27,7 @@ const HomePage = () => {
             <Card>
               <VerticalStack gap="2">
                 <Text as="h2" variant="headingMd">
-                  Debug Cards
+                  GraphQL
                 </Text>
                 <Text>
                   Explore how the repository handles data fetching from the
@@ -38,7 +38,7 @@ const HomePage = () => {
                   <Button
                     primary
                     onClick={() => {
-                      router.push("/debug");
+                      router.push("/polaris");
                     }}
                   >
                     Debug Cards
@@ -142,7 +142,19 @@ const HomePage = () => {
               </VerticalStack>
             </Card>
           </Layout.Section>
-          <Layout.Section oneHalf />
+          <Layout.Section oneHalf>
+            <Card>
+              <Button primary onClick={() => {router.push("/resourcepicker")}}>To Resource Picker</Button>
+            </Card>
+          </Layout.Section>
+          
+          <Layout.Section wrap>
+            <Card wrap>
+              <Button primary onClick={() => {router.push("/checklist")}}>Checklist</Button>
+            </Card>
+          </Layout.Section>
+          
+
         </Layout>
       </Page>
     </>

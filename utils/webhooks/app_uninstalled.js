@@ -9,6 +9,8 @@ import prisma from "@/utils/prisma.js";
 
 const appUninstallHandler = async (topic, shop, webhookRequestBody) => {
   try {
+
+    console.log(`Received app uninstalled webhook for ${shop}`)
     /** @type {AppUninstalled} */
     const webhookBody = JSON.parse(webhookRequestBody);
 

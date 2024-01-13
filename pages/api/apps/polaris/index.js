@@ -15,7 +15,7 @@ const sessionHandler = async (req, res) => {
       mutation {
         productUpdate(
           input: {id: "gid://shopify/Product/6954218618924", 
-            title: "GraphQL Snowboard", 
+            title: "Polaris Snowboard", 
             descriptionHtml: "<p>This is an updated description</p>"}
         ) {
           product {

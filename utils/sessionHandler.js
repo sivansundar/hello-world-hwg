@@ -20,6 +20,7 @@ const storeSession = async (session) => {
 };
 
 const loadSession = async (id) => {
+  console.log("HELLLLL")
   const sessionResult = await prisma.session.findUnique({ where: { id } });
 
   if (sessionResult === null) {
