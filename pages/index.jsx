@@ -1,5 +1,6 @@
 import isShopAvailable from "@/utils/middleware/isShopAvailable";
 import {
+  Box,
   Button,
   Card,
   HorizontalStack,
@@ -144,17 +145,38 @@ const HomePage = () => {
           </Layout.Section>
           <Layout.Section oneHalf>
             <Card>
-              <Button primary onClick={() => {router.push("/resourcepicker")}}>To Resource Picker</Button>
-            </Card>
-          </Layout.Section>
-          
-          <Layout.Section wrap>
-            <Card wrap>
-              <Button primary onClick={() => {router.push("/checklist")}}>Checklist</Button>
-            </Card>
-          </Layout.Section>
-          
+              <VerticalStack gap="2">
+                <HorizontalStack wrap={false} align="center" gap="2">
+                  <Button
+                    primary
+                    onClick={() => {
+                      router.push("/resourcepicker");
+                    }}
+                  >
+                    To Resource Picker
+                  </Button>
 
+                  <Button
+                    primary
+                    onClick={() => {
+                      router.push("/restock");
+                    }}
+                  >
+                    ReStock Checklist
+                  </Button>
+
+                  <Button
+                    primary
+                    onClick={() => {
+                      router.push("/deliverychecklist");
+                    }}
+                  >
+                    Delivery Rate Checklist
+                  </Button>
+                </HorizontalStack>
+              </VerticalStack>
+            </Card>
+          </Layout.Section>
         </Layout>
       </Page>
     </>
