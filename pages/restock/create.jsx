@@ -24,6 +24,7 @@ const create = () => {
     });
 
     if (selected) {
+      console.log(selected)
       const result = getProduct(selected);
       console.log(result);
 
@@ -42,6 +43,8 @@ const create = () => {
     </Button>
   );
 
+
+  
   function HeadingSection({ title, description, quantity, image }) {
     return (
       <HorizontalStack gap="5">
@@ -76,25 +79,38 @@ const create = () => {
         <Layout>
           <Layout.Section>
             <Box gap="200">
-              <Card>
-                <div>
-                  <HorizontalStack align="end">{pickButton}</HorizontalStack>
-                </div>
+              <VerticalStack gap="25">
+                <Card>
+                  <div>
+                    <HorizontalStack align="end">{pickButton}</HorizontalStack>
+                  </div>
+
+                  {selectedProduct.length > 0 ? (
+                    <HeadingSection
+                      title={selectedProduct[0].title}
+                      description={selectedProduct[0].description}
+                      quantity={selectedProduct[0].quantity}
+                      image={
+                        selectedProduct[0].images.map(
+                          (data) => data.originalSrc
+                        )[0]
+                      }
+                    ></HeadingSection>
+                  ) : (
+                    <></>
+                  )}
+                </Card>
 
                 {selectedProduct.length > 0 ? (
-                  <HeadingSection
-                    title={selectedProduct[0].id}
-                    description={selectedProduct[0].id}
-                    image={
-                      selectedProduct[0].images.map(
-                        (data) => data.originalSrc
-                      )[0]
-                    }
-                  ></HeadingSection>
+                  <Card>
+                   <Text variant="heading2xl" as="h3">
+        Lets setup!
+      </Text>
+                  </Card>
                 ) : (
                   <></>
                 )}
-              </Card>
+              </VerticalStack>
             </Box>
           </Layout.Section>
         </Layout>
@@ -111,7 +127,7 @@ function getProduct(data) {
       id: res.id,
       title: res.title,
       description: res.description,
-      quantity: res.quantity,
+      quantity: res.totalInventory,
       images: images,
     };
     return result;
@@ -126,3 +142,17 @@ function getProduct(data) {
 }
 
 export default create;
+
+[
+  {
+    id: "gid://shopify/Product/6954218651692",
+    title: "Cheems sticker",
+    images: [
+      {
+        id: "gid://shopify/ProductImage/36274758156332",
+        originalSrc:
+          "https://cdn.shopify.com/s/files/1/0588/9789/1372/files/59ba1z.jpg?v=1705945152",
+      },
+    ],
+  },
+];
