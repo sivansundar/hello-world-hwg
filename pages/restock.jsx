@@ -29,7 +29,9 @@ const checklist = () => {
                 </Text>
 
                 <HorizontalStack align="end">
-                  <Button primary onClick={() => {}}>
+                  <Button primary onClick={() => {
+                    router.push("/restock/dashboard")
+                  }}>
                     Open dashboard
                   </Button>
                 </HorizontalStack>

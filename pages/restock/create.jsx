@@ -43,19 +43,14 @@ const Create = () => {
   const [email, setEmail] = useState("");
   const [threshold, setThreshold] = useState("");
 
-  const handleSubmit = useCallback(() => {
-    console.log("Email : ", email);
-    triggerModal();
-  }, [email, threshold]);
-
   const handleEmailChange = useCallback((value) => setEmail(value), []);
 
   const handleThresholdChange = useCallback((value) => setThreshold(value), []);
 
-  async function triggerModal() {
-    const modal = await window.document.getElementById("my-modal").show();
-    console.log(modal);
-  }
+  const handleSubmit = useCallback(() => {
+    console.log("Email : ", email);
+    triggerModal();
+  }, [email, threshold]);
 
   const handleModalPositive = useCallback(() => {
     saveForm(email, threshold, selectedProduct[0]);
@@ -64,6 +59,11 @@ const Create = () => {
   const handleModalNegative = useCallback(async () => {
     await window.document.getElementById("my-modal").hide();
   });
+
+  async function triggerModal() {
+    const modal = await window.document.getElementById("my-modal").show();
+    console.log(modal);
+  }
 
   async function saveForm(email, threshold, product) {
     console.log(product);
