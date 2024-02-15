@@ -81,7 +81,7 @@ const Create = () => {
       console.log(response);
 
       if (response.status === 200) {
-        shopify.toast.show("Alert created ⭐️", {
+        const toast = await shopify.toast.show("Alert created ⭐️", {
           duration: 5000,
         });
 
