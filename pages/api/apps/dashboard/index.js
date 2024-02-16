@@ -23,16 +23,60 @@ const handler = async (req, res) => {
     });
 
     const shopId = shop.body.data.shop.id;
-    
+
     const data = await prisma.alerts.findMany({
-        where : {
-        shop : shopId
-        }
+      where: {
+        shop: shopId,
+      },
     });
 
-    return res
-      .status(200)
-      .send({ text: "This text is coming from dashboard route", data : data, size : data.size });
+    const ids = data.map((prod) => prod.productId);
+
+    const product = await client.query({
+      data: {
+        query: `query ($ids : [ID!]!) {
+          nodes(ids:$ids){
+            ... on Product{
+              id
+              title
+              totalInventory
+              images(first:1) {
+                nodes{
+                  id
+                  url
+                } 
+              }
+            }
+          }
+        }`,
+        variables: {
+          ids: ids,
+        },
+      },
+    });
+
+    //console.log(product.body.data.nodes)
+
+    const root = product.body.data.nodes;
+    console.log(root)
+    console.log("#@$#@$")
+    const images = product.body.data.nodes.map((dat) =>
+      dat.images.nodes.map((nod) => nod.url).flat()
+    );
+    console.log(images[0].toString());
+
+    const re = data.map((dbItem, index) => {
+      return { 
+        id: dbItem.id, 
+        title: root[index].title,
+        image : images[index].toString()
+       };
+    });
+    console.log(re);
+
+    return res.status(200).send({
+      data: re,
+    });
   }
 
   if (req.method === "POST") {
@@ -43,5 +87,3 @@ const handler = async (req, res) => {
 };
 
 export default withMiddleware("verifyRequest")(handler);
-
-

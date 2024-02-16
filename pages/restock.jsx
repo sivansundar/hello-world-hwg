@@ -11,7 +11,6 @@ import {
 
 import { useRouter } from "next/router";
 
-
 const checklist = () => {
   const router = useRouter();
 
@@ -29,9 +28,12 @@ const checklist = () => {
                 </Text>
 
                 <HorizontalStack align="end">
-                  <Button primary onClick={() => {
-                    router.push("/restock/dashboard")
-                  }}>
+                  <Button
+                    primary
+                    onClick={() => {
+                      router.push("/restock/dashboard");
+                    }}
+                  >
                     Open dashboard
                   </Button>
                 </HorizontalStack>
@@ -46,7 +48,12 @@ const checklist = () => {
                 <Text variant="bodyMd">Create a new alert for a product</Text>
 
                 <HorizontalStack align="end">
-                  <Button primary onClick={() => {router.push("/restock/create")}}>
+                  <Button
+                    primary
+                    onClick={() => {
+                      router.push("/restock/create");
+                    }}
+                  >
                     Create
                   </Button>
                 </HorizontalStack>

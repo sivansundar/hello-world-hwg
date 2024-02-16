@@ -24,6 +24,7 @@ model alerts {
   email     String
   productId String
   threshold String
+  isActive Boolean @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

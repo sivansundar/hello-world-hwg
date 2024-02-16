@@ -75,6 +75,7 @@ const Create = () => {
           email: email,
           threshold: threshold,
           productId: product.id,
+          isActive : false
         }),
       });
 

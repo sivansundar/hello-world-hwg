@@ -40,6 +40,7 @@ const handler = async (req, res) => {
         threshold: body.threshold,
         productId: body.productId,
         shop: shopId,
+        isActive : body.isActive
       },
     });
     
