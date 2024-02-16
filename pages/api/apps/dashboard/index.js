@@ -58,24 +58,28 @@ const handler = async (req, res) => {
     //console.log(product.body.data.nodes)
 
     const root = product.body.data.nodes;
+    
     console.log(root)
     console.log("#@$#@$")
+
     const images = product.body.data.nodes.map((dat) =>
       dat.images.nodes.map((nod) => nod.url).flat()
     );
+    
     console.log(images[0].toString());
 
-    const re = data.map((dbItem, index) => {
+    const dataObj = data.map((dbItem, index) => {
       return { 
         id: dbItem.id, 
         title: root[index].title,
-        image : images[index].toString()
+        image : images[index].toString(),
+        isWebhookActive : dbItem.isActive
        };
     });
-    console.log(re);
+    console.log(dataObj);
 
     return res.status(200).send({
-      data: re,
+      data: dataObj,
     });
   }
 

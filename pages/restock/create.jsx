@@ -69,7 +69,7 @@ const Create = () => {
     console.log(product);
     try {
       await window.document.getElementById("my-modal").hide();
-      const response = await fetch("/api/apps/create", {
+      const response = await fetch("/api/apps/create/insert", {
         method: "POST",
         body: JSON.stringify({
           email: email,

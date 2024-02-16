@@ -40,10 +40,10 @@ const handler = async (req, res) => {
         threshold: body.threshold,
         productId: body.productId,
         shop: shopId,
-        isActive : body.isActive
+        isActive: body.isActive,
       },
     });
-    
+
     return res.status(200).send(response);
   }
 

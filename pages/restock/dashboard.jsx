@@ -21,6 +21,7 @@ const Dashboard = () => {
   const fetch = useFetch();
 
   const [alerts, setAlerts] = useState({});
+  const [btnState, setbtnState] = useState(false);
   const [products, setProducts] = useState([{}]);
   const [loading, setLoading] = useState(false);
 
@@ -52,6 +53,11 @@ const Dashboard = () => {
     console.log(alerts)
   }
 
+  function handleWHToggle (value) {
+    console.log(value);
+  };
+
+
   return (
     <>
       <Page backAction={{ content: "Dashboard", url: "/restock" }}>
@@ -62,15 +68,22 @@ const Dashboard = () => {
             
             alerts.map((data, index) => {   
               console.log(data)       
+
+              let btnText;
+              {data.isActive ? btnText = "Turn OFF" : btnText = "Turn ON"}
+
+              
               return (
                 <MediaCard
                   key={data.id}
                   title={data.title}
                   primaryAction={{
-                    content: "Learn about getting started",
-                    onAction: () => {},
+                    content: btnText,
+                    onAction: () => {
+                      setbtnState(handleWHToggle(!data.isActive))
+                    },
                   }}
-                  description="Discover how Shopify can power up your entrepreneurial journey."
+                  description={data.isActive ? "Webhook is active" : "Webhook is inactive"}
                   popoverActions={[{ content: "Dismiss", onAction: () => {} }]}
                   size="small"
                 >
