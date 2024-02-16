@@ -39,7 +39,7 @@ const HomePage = () => {
                   <Button
                     primary
                     onClick={() => {
-                      router.push("/polaris");
+                      router.push("/debug");
                     }}
                   >
                     Debug Cards

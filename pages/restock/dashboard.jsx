@@ -53,8 +53,20 @@ const Dashboard = () => {
     console.log(alerts)
   }
 
-  function handleWHToggle (value) {
-    console.log(value);
+  async function handleWHToggle (id, state) {
+    console.log(state);
+
+
+    const response = await (await fetch("/api/apps/create/update", {
+      method: "POST",
+      body: JSON.stringify({
+        id : id,
+        isActive : state
+      }),
+    })).json();
+
+    fetchAlerts();
+
   };
 
 
@@ -70,7 +82,7 @@ const Dashboard = () => {
               console.log(data)       
 
               let btnText;
-              {data.isActive ? btnText = "Turn OFF" : btnText = "Turn ON"}
+              {data.isWebhookActive ? btnText = "Turn OFF" : btnText = "Turn ON"}
 
               
               return (
@@ -80,10 +92,10 @@ const Dashboard = () => {
                   primaryAction={{
                     content: btnText,
                     onAction: () => {
-                      setbtnState(handleWHToggle(!data.isActive))
+                      handleWHToggle(data.id, !data.isWebhookActive)
                     },
                   }}
-                  description={data.isActive ? "Webhook is active" : "Webhook is inactive"}
+                  description={data.isWebhookActive ? "Webhook is active" : "Webhook is inactive"}
                   popoverActions={[{ content: "Dismiss", onAction: () => {} }]}
                   size="small"
                 >
