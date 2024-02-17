@@ -37,7 +37,14 @@ const productUpdateHandler = async (topic, shop, webhookRequestBody) => {
       const message = `<p>Looks like your product with product id <strong>${data.productId}</strong> is low on stock with only <strong>${webhookBody.variants[0].inventory_quantity} of them being available</strong>. ReStock it back up before it is too late`;
 
       // If you want to test it out, set "from" to "onboarding@resend.dev", to : "sivan.sundar@gmail.com". This is just to test if the emailing service works. 
-      // Having this fallback because DNS records of sivansundar.com is being verified by Resend at the moment. Once this succeeds, hello@sivansundar.com would be able to send emails via to Resend to anyone.
+      // Having this fallback because DNS records of sivansundar.com is being verified by Resend at the moment. Until this completes, if you use onboarding@resend.dev to send email, it can only be sent to sivan.sundar@gmail.com. Once DNS verification succeeds, hello@sivansundar.com would be able to send emails via to Resend to anyone.
+
+      // const email = await resend.emails.send({
+      //   from: 'onboarding@resend.dev',
+      //   to: 'sivan.sundar@gmail.com',
+      //   subject: 'Your product is low on stock | ReStock',
+      //   html: message
+      // });
 
       const email = await resend.emails.send({
         from: 'hello@sivansundar.com',

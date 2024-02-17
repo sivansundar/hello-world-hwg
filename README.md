@@ -26,6 +26,10 @@ Building with Express and React was great but eventually there comes a time wher
 
 ## Notes
 
+- Refer to a [Simpler SETUP](/docs/SIMPLE_SETUP.md)
+
+
 - Refer to [SETUP](/docs/SETUP.md)
 - The project comes with snippets to speed up development. Refer to [Snippets](/docs/SNIPPETS.md).
 - App Bridge CDN migration guide is available [here](/docs/migration/app-bridge-cdn.md)
+
