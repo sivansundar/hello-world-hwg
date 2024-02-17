@@ -25,8 +25,6 @@ const Dashboard = () => {
   const [products, setProducts] = useState([{}]);
   const [loading, setLoading] = useState(false);
 
-  //fetchAlerts();
-
   async function fetchAlerts() {
     // Set loading to true
     setLoading(true);
